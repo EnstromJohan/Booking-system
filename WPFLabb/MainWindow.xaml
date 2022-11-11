@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Labb"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800">
+        Title="MainWindow" Height="520" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -22,8 +22,7 @@
                Grid.ColumnSpan="3" 
                Content="Restaurang WPF" 
                HorizontalContentAlignment="Center" 
-               FontSize="20"
-               FontWeight="Bold"/>
+               FontSize="20"/>
         <StackPanel 
             Grid.Row="1" 
             Grid.RowSpan="3" 
@@ -35,10 +34,10 @@
                 FontSize="15" 
                 FontWeight="Bold"/>
             <DatePicker 
-                x:Name="DatePicker" 
+                x:Name="Kalender" 
                 Margin="10"/>
             <ComboBox
-                x:Name="TimeComboBox"
+                x:Name="TidComboBox"
                 IsEditable="True"
                 IsReadOnly="True"
                 Text="Tid"
@@ -52,12 +51,12 @@
                 HorizontalAlignment="Center" 
                 Margin="10"/>
             <TextBox 
-                x:Name="NameTextBox" 
+                x:Name="NamnTextBox" 
                 Height="21" 
                 Width="191" 
                 Margin="0, 0, 0, 10"/>
             <ComboBox 
-                x:Name="TableBox" 
+                x:Name="BordBox" 
                 IsEditable="True" 
                 IsReadOnly = "True" 
                 Text="Bord"
@@ -67,7 +66,7 @@
                 Width="191" 
                 Margin="10,0" />
             <Button 
-                x:Name="Boka" 
+                x:Name="BokaBtn" 
                 Content="Boka"
                 HorizontalContentAlignment="Center"
                 Click="AddDateToList_Click"  
@@ -88,42 +87,41 @@
             Grid.RowSpan="3" 
             Grid.Column="1" 
             Margin="0,48,0,10">
-            <ListBox 
-                x:Name="MyListBox"
+            <ListView 
+                x:Name="MyListView"
                 Height="227" 
                 Width="232" 
                 Margin="10"/>
 
         </StackPanel>
-        <Button x:Name="RensaBokning"
+        <Button x:Name="TaBortBokningBtn"
                 Content="Ta bort bokning"
                 HorizontalContentAlignment="Center"
-                Click="RensaBokning_Click" 
+                Click="TaBortBokningBtn_Click" 
                 Grid.Column="1" 
-                Margin="18,131,140,161" 
-                Grid.Row="2" Grid.RowSpan="2"/>
-        <Button x:Name="ListaBokning"
+                Margin="18,13,137,106" 
+                Grid.Row="3" RenderTransformOrigin="0.499,0.478"/>
+        <Button x:Name="ListaBokningBtn"
                 Content="Visa bokningar"
                 HorizontalContentAlignment="Center"
-                Click="VisaBokning_Click" 
+                Click="VisaBokningBtn_Click" 
                 Grid.Column="1" 
-                Margin="138,131,18,161" 
-                Grid.Row="2" Grid.RowSpan="2"/>
-        <Button x:Name="Rensa"
+                Margin="135,13,18,106" 
+                Grid.Row="3"/>
+        <Button x:Name="RensaBtn"
                 Content="Rensa lista"
                 HorizontalContentAlignment="Center"
-                Click="Rensa_Click"
-                Width="230"
-                Grid.Column="1" 
-                Margin="18,18,18,112" 
-                Grid.Row="3"/>
-        <Button x:Name="Avsluta"
-                Content="Avsluta"
-                HorizontalContentAlignment="Center"
-                Click="Avsluta_Click"
-                Width="230"
+                Click="RensaBtn_Click"
                 Grid.Column="1" 
                 Margin="18,54,18,64" 
+                Grid.Row="3"/>
+        <Button x:Name="AvslutaBtn"
+                Content="Avsluta"
+                HorizontalContentAlignment="Center"
+                Click="AvslutaBtn_Click"
+                Width="230"
+                Grid.Column="1" 
+                Margin="18,96,18,23" 
                 Grid.Row="3"/>
 
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,83 +33,77 @@ namespace Labb
         List<Restaurant>? reservations = new();
 
         string[] valbaraTider = { "17.00", "18:00", "19:00", "20:00", "21:00", "22:00" };
-        string[] valbaraBord = { "Bord 1", "Bord 2", "Bord 3" };
-
-
+        string[] valbaraBord = { "Bord 1", "Bord 2", "Bord 3", "Bord 4", "Bord 5", "Bord 6" };
 
         public MainWindow()
         {
-            InitializeComponent();
 
-            //MyListBox.ItemsSource = reservations;
+            InitializeComponent();
             DisplayContent();
             ToListBox();
+            Calendar();
 
         }
 
         private void DisplayContent()
         {
-            TimeComboBox.ItemsSource = valbaraTider;
-            TableBox.ItemsSource = valbaraBord;
-
+            //MyListBox.ItemsSource = reservations;
+            TidComboBox.ItemsSource = valbaraTider;
+            BordBox.ItemsSource = valbaraBord;
+            
         }
 
-
+        private void Calendar()
+        {
+            Kalender.BlackoutDates.AddDatesInPast();
+            Kalender.BlackoutDates.Add(new CalendarDateRange(DateTime.Now.AddDays(-1)));
+        }
         public void AddDateToList_Click(object sender, RoutedEventArgs e)
         {
-            try
+
+            if (Kalender.SelectedDate != null && TidComboBox.SelectedItem != null && !(string.IsNullOrEmpty(NamnTextBox.Text) && BordBox.SelectedItem != null))
             {
-                MyListBox.Items.Clear();
-                if (MyListBox.Items.Contains(DatePicker.SelectedDate))
-                {
-                    MessageBox.Show("Datumet är redan bokat");
-                }
-                else
-                    reservations.Add(new Restaurant((DateTime)DatePicker.SelectedDate, TimeComboBox.Text, NameTextBox.Text, TableBox.Text));
+                MyListView.Items.Clear();
+                reservations.Add(new Restaurant((DateTime)Kalender.SelectedDate, TidComboBox.Text, NamnTextBox.Text, BordBox.Text));
                 ToListBox();
+                TidComboBox.Text = String.Empty;
+                NamnTextBox.Text = String.Empty;
+                BordBox.Text = String.Empty;
             }
-            catch (Exception)
+
+            else
             {
                 MessageBox.Show("Du saknar ett val! Försök igen", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-        }
 
+        }
+        public void TaBortBokningBtn_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (string s in MyListView.SelectedItems.OfType<string>().ToList())
+                MyListView.Items.Remove(s);
+            
+        }
         public void ToListBox()
         {
-            //reservations.Add(new Restaurant { Date = "2022-10-11", Time = "18.00", Name = "Johan", Table = "Bord 1" });
-
-            try
+            foreach (Restaurant input in reservations)
             {
-                foreach (Restaurant input in reservations)
-                {
-                    MyListBox.Items.Add(input.Date + ", " + input.Time + ", " + input.Name + ", " + input.Table);
-                }
+                MyListView.Items.Add(input.Date + ", " + input.Time + ", " + input.Name + ", " + input.Table);
             }
-            catch (Exception e)
-            {
-                MessageBox.Show("Du saknar ett val! Försök igen", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            
         }
-        private void RensaBokning_Click(object sender, RoutedEventArgs e)
-        {
-            MyListBox.Items.Remove(MyListBox.SelectedItem);
+        private void VisaBokningBtn_Click(object sender, RoutedEventArgs e)
 
-
-        }
-
-        private void VisaBokning_Click(object sender, RoutedEventArgs e)
         {
             ToListBox();
 
         }
-        private void Rensa_Click(object sender, RoutedEventArgs e)
+        private void RensaBtn_Click(object sender, RoutedEventArgs e)
         {
-            MyListBox.Items.Clear();
+            MyListView.Items.Clear();
         }
 
-
-        private void Avsluta_Click(object sender, RoutedEventArgs e)
+        private void AvslutaBtn_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
 

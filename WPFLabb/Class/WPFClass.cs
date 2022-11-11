@@ -15,6 +15,7 @@ namespace WPFLabb.Class
             public string Name { get; set; }
             public string Table { get; set; }
 
+
             public Restaurant(DateTime date, string time, string name, string table)
             {
                 Date = date.ToString("yyyy/MM/dd");
@@ -22,6 +23,7 @@ namespace WPFLabb.Class
                 Name = name;
                 Table = table;
             }
+
         }
     }
 }
