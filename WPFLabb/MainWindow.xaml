@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Labb"
         mc:Ignorable="d"
-        Title="MainWindow" Height="520" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -66,7 +66,7 @@
                 Width="191" 
                 Margin="10,0" />
             <Button 
-                x:Name="BokaBtn" 
+                x:Name="Boka" 
                 Content="Boka"
                 HorizontalContentAlignment="Center"
                 Click="AddDateToList_Click"  
@@ -97,23 +97,27 @@
         <Button x:Name="TaBortBokningBtn"
                 Content="Ta bort bokning"
                 HorizontalContentAlignment="Center"
-                Click="TaBortBokningBtn_Click" 
+                Click="TaBortBokningBtn_Click"
+                Height="21" 
                 Grid.Column="1" 
-                Margin="18,13,137,106" 
-                Grid.Row="3" RenderTransformOrigin="0.499,0.478"/>
+                Margin="18,24,141,100" 
+                Grid.Row="3"/>
         <Button x:Name="ListaBokningBtn"
                 Content="Visa bokningar"
                 HorizontalContentAlignment="Center"
-                Click="VisaBokningBtn_Click" 
+                Click="VisaBokningBtn_Click"
+                Height="21" 
                 Grid.Column="1" 
-                Margin="135,13,18,106" 
+                Margin="140,24,18,100" 
                 Grid.Row="3"/>
         <Button x:Name="RensaBtn"
                 Content="Rensa lista"
                 HorizontalContentAlignment="Center"
                 Click="RensaBtn_Click"
+                Height="21"
+                Width="230"
                 Grid.Column="1" 
-                Margin="18,54,18,64" 
+                Margin="18,57,18,67" 
                 Grid.Row="3"/>
         <Button x:Name="AvslutaBtn"
                 Content="Avsluta"
@@ -121,7 +125,7 @@
                 Click="AvslutaBtn_Click"
                 Width="230"
                 Grid.Column="1" 
-                Margin="18,96,18,23" 
+                Margin="18,89,18,30" 
                 Grid.Row="3"/>
 
 
