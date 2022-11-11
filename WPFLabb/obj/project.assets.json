@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\johan\\source\\repos\\WPFLabb\\WPFLabb\\WPFLabb.csproj",
+      "projectUniqueName": "C:\\Users\\johan\\Source\\Repos\\WPFLabb1\\WPFLabb\\WPFLabb.csproj",
       "projectName": "WPFLabb",
-      "projectPath": "C:\\Users\\johan\\source\\repos\\WPFLabb\\WPFLabb\\WPFLabb.csproj",
+      "projectPath": "C:\\Users\\johan\\Source\\Repos\\WPFLabb1\\WPFLabb\\WPFLabb.csproj",
       "packagesPath": "C:\\Users\\johan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\johan\\source\\repos\\WPFLabb\\WPFLabb\\obj\\",
+      "outputPath": "C:\\Users\\johan\\Source\\Repos\\WPFLabb1\\WPFLabb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
