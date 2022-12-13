@@ -47,7 +47,7 @@ namespace Labb
 
         private void DisplayContent()
         {
-            //MyListBox.ItemsSource = reservations;
+            
             TidComboBox.ItemsSource = valbaraTider;
             BordBox.ItemsSource = valbaraBord;
             
@@ -65,6 +65,7 @@ namespace Labb
             {
                 MyListView.Items.Clear();
                 reservations.Add(new Restaurant((DateTime)Kalender.SelectedDate, TidComboBox.Text, NamnTextBox.Text, BordBox.Text));
+
                 ToListBox();
                 TidComboBox.Text = String.Empty;
                 NamnTextBox.Text = String.Empty;
@@ -80,22 +81,38 @@ namespace Labb
         }
         public void TaBortBokningBtn_Click(object sender, RoutedEventArgs e)
         {
-            foreach (string s in MyListView.SelectedItems.OfType<string>().ToList())
-                MyListView.Items.Remove(s);
+            
+            RemoveListBox();
             
         }
         public void ToListBox()
         {
+            MyListView.Items.Clear();
             foreach (Restaurant input in reservations)
             {
+                
                 MyListView.Items.Add(input.Date + ", " + input.Time + ", " + input.Name + ", " + input.Table);
+
+
             }
-            
+
+        }
+
+        public void RemoveListBox()
+        {
+            if (MyListView.SelectedItems.Count != 0)
+            {
+                while (MyListView.SelectedIndex != -1)
+                {
+                    MyListView.Items.RemoveAt(MyListView.SelectedIndex);
+                }
+            }
         }
         private void VisaBokningBtn_Click(object sender, RoutedEventArgs e)
 
-        {
+        {          
             ToListBox();
+
 
         }
         private void RensaBtn_Click(object sender, RoutedEventArgs e)
