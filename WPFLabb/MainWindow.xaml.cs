@@ -29,7 +29,6 @@ namespace Labb
     /// </summary>
     public partial class MainWindow : Window
     {
-
         List<Restaurant>? reservations = new();
 
         string[] valbaraTider = { "17.00", "18:00", "19:00", "20:00", "21:00", "22:00" };
@@ -37,20 +36,16 @@ namespace Labb
 
         public MainWindow()
         {
-
             InitializeComponent();
             DisplayContent();
             ToListBox();
             Calendar();
-
         }
-
         private void DisplayContent()
         {
-            
+
             TidComboBox.ItemsSource = valbaraTider;
             BordBox.ItemsSource = valbaraBord;
-            
         }
 
         private void Calendar()
@@ -76,28 +71,20 @@ namespace Labb
             {
                 MessageBox.Show("Du saknar ett val! Försök igen", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
         }
         public void TaBortBokningBtn_Click(object sender, RoutedEventArgs e)
         {
-            
             RemoveListBox();
-            
         }
         public void ToListBox()
         {
             MyListView.Items.Clear();
             foreach (Restaurant input in reservations)
             {
-                
                 MyListView.Items.Add(input.Date + ", " + input.Time + ", " + input.Name + ", " + input.Table);
-
-
             }
 
         }
-
         public void RemoveListBox()
         {
             if (MyListView.SelectedItems.Count != 0)
@@ -110,10 +97,8 @@ namespace Labb
         }
         private void VisaBokningBtn_Click(object sender, RoutedEventArgs e)
 
-        {          
+        {
             ToListBox();
-
-
         }
         private void RensaBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -123,7 +108,6 @@ namespace Labb
         private void AvslutaBtn_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
-
         }
     }
 }
