@@ -1,2 +1,2 @@
 # WPFLabb
-Laboration: To create a simple booking system
+School assignment, to create a simple booking system.
